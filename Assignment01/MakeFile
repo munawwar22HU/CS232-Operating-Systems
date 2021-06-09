@@ -1,0 +1,30 @@
+build: main.o Scheduler.o
+	gcc -o main.out main.o Scheduler.o
+
+
+main.out : main.o Scheduler.o
+	gcc -o main.out main.o Scheduler.o
+
+main.o : main.c
+	gcc -c main.c
+
+Scheduler.o : Scheduler.c
+	gcc -c Scheduler.c
+
+
+
+
+rebuild:
+	rm main.o Scheduler.o
+	gcc -c main.c 
+	gcc -c Scheduler.c
+	gcc -o main.out Scheduler.o main.o
+
+clean:
+	rm main.o Scheduler.o
+
+run:
+	./main.out processes.dat FIFO
+	./main.out processes.dat SJF
+	./main.out processes.dat STCF
+	./main.out processes.dat RR
